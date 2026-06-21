@@ -10,7 +10,7 @@ function App() {
 
   const calculateFootprint = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/calculate", {
+      const response = await axios.posthttps://ecotrackai-zxn2.onrender.com/calculate", {
         carKm: Number(carKm),
         electricityUnits: Number(electricityUnits),
         foodType,
