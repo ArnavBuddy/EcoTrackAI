@@ -10,11 +10,14 @@ function App() {
 
   const calculateFootprint = async () => {
     try {
-      const response = await axios.posthttps://ecotrackai-zxn2.onrender.com/calculate", {
-        carKm: Number(carKm),
-        electricityUnits: Number(electricityUnits),
-        foodType,
-      });
+      const response = await axios.post(
+        "https://ecotrackai-zxn2.onrender.com/calculate",
+        {
+          carKm: Number(carKm),
+          electricityUnits: Number(electricityUnits),
+          foodType,
+        }
+      );
 
       setResult(response.data);
     } catch (error) {
@@ -73,7 +76,10 @@ function App() {
 
       <label>Food Type</label>
       <br />
-      <select value={foodType} onChange={(e) => setFoodType(e.target.value)}>
+      <select
+        value={foodType}
+        onChange={(e) => setFoodType(e.target.value)}
+      >
         <option value="vegetarian">Vegetarian</option>
         <option value="mixed">Mixed</option>
         <option value="meat">Meat</option>
@@ -115,8 +121,8 @@ function App() {
             {result.ecoScore >= 80
               ? "🌱 Eco Champion"
               : result.ecoScore >= 60
-                ? "♻️ Green Citizen"
-                : "⚠️ Needs Improvement"}
+              ? "♻️ Green Citizen"
+              : "⚠️ Needs Improvement"}
           </p>
 
           {goal && Number(goal) > 0 && (
@@ -126,13 +132,15 @@ function App() {
               <p>Target Goal: {goal} kg CO₂</p>
 
               <p>
-                Difference: {Math.abs(Number(goal) - result.total).toFixed(1)}
+                Difference:{" "}
+                {Math.abs(Number(goal) - result.total).toFixed(1)}
                 kg CO₂
               </p>
 
               {result.total <= Number(goal) ? (
                 <p>
-                  ✅ Great! You are {(Number(goal) - result.total).toFixed(1)}
+                  ✅ Great! You are{" "}
+                  {(Number(goal) - result.total).toFixed(1)}
                   kg CO₂ below your goal.
                 </p>
               ) : (
