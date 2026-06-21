@@ -16,7 +16,6 @@ function App() {
           carKm: Number(carKm),
           electricityUnits: Number(electricityUnits),
           foodType,
-        }
       );
 
       setResult(response.data);
